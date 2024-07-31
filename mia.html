@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje Especial</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: #fff;
+            position: relative;
+        }
+        
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            color: #ff69b4; /* Color rosa fuerte */
+            text-align: center;
+            z-index: 1;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .heart {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: red;
+            transform: rotate(-45deg);
+            animation: float 3s infinite;
+        }
+        
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 150px;
+            border-radius: 50%;
+            background: red;
+        }
+        
+        .heart::before {
+            left: 50px;
+            transform: rotate(-45deg);
+        }
+        
+        .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="message">TE AMO NICOLL FUENTES</div>
+    <script>
+        function createHearts() {
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.top = `${Math.random() * 100}vh`;
+                heart.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                document.body.appendChild(heart);
+            }
+        }
+
+        createHearts();
+    </script>
+</body>
+</html>
